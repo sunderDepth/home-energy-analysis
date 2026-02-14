@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warm neutral palette */
+  --color-sand-50: #faf8f5;
+  --color-sand-100: #f2eeea;
+  --color-sand-200: #e5dfda;
+  --color-sand-300: #cdc4bb;
+  --color-sand-400: #a89e94;
+  --color-sand-500: #8a7f74;
+  --color-sand-600: #6b6159;
+  --color-sand-700: #504840;
+  --color-sand-800: #3a332d;
+  --color-sand-900: #251f1b;
+
+  /* Primary — teal/green */
+  --color-primary-50: #f0fdf6;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+
+  /* Accent — warm amber */
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+
+  /* Danger */
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-sand-50);
+  color: var(--color-sand-800);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shadow-card {
+  box-shadow: 0 1px 3px rgba(139, 125, 109, 0.12), 0 1px 2px rgba(139, 125, 109, 0.08);
+}
+.shadow-card-hover {
+  box-shadow: 0 4px 6px rgba(139, 125, 109, 0.1), 0 2px 4px rgba(139, 125, 109, 0.06);
+}

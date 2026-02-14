@@ -1,0 +1,96 @@
+import type { FuelReference } from './index.ts';
+
+export const FUEL_DATA: FuelReference[] = [
+  {
+    key: 'oil_2',
+    name: 'Fuel Oil #2',
+    unit: 'gallon',
+    unit_plural: 'gallons',
+    btu_per_unit: 138_500,
+    typical_system_efficiency: 0.83,
+    co2_lbs_per_mmbtu: 161.3,
+    default_price: 3.95,
+    input_mode: 'delivery',
+  },
+  {
+    key: 'propane',
+    name: 'Propane',
+    unit: 'gallon',
+    unit_plural: 'gallons',
+    btu_per_unit: 91_333,
+    typical_system_efficiency: 0.85,
+    co2_lbs_per_mmbtu: 139.0,
+    default_price: 3.10,
+    input_mode: 'delivery',
+  },
+  {
+    key: 'natural_gas',
+    name: 'Natural Gas',
+    unit: 'therm',
+    unit_plural: 'therms',
+    btu_per_unit: 100_000,
+    typical_system_efficiency: 0.90,
+    co2_lbs_per_mmbtu: 117.0,
+    default_price: 1.50,
+    input_mode: 'billing',
+  },
+  {
+    key: 'wood_pellets',
+    name: 'Wood Pellets',
+    unit: 'ton',
+    unit_plural: 'tons',
+    btu_per_unit: 16_400_000,
+    typical_system_efficiency: 0.83,
+    co2_lbs_per_mmbtu: 0,
+    default_price: 300,
+    input_mode: 'delivery',
+  },
+  {
+    key: 'electricity_resistance',
+    name: 'Electric (Resistance)',
+    unit: 'kWh',
+    unit_plural: 'kWh',
+    btu_per_unit: 3_412,
+    typical_system_efficiency: 1.0,
+    co2_lbs_per_mmbtu: 95.0, // varies by grid
+    default_price: 0.22,
+    input_mode: 'billing',
+  },
+  {
+    key: 'electricity_heat_pump',
+    name: 'Electric (Heat Pump)',
+    unit: 'kWh',
+    unit_plural: 'kWh',
+    btu_per_unit: 3_412,
+    typical_system_efficiency: 2.5, // COP
+    co2_lbs_per_mmbtu: 95.0,
+    default_price: 0.22,
+    input_mode: 'billing',
+  },
+  {
+    key: 'cordwood',
+    name: 'Cordwood (Seasoned)',
+    unit: 'cord',
+    unit_plural: 'cords',
+    btu_per_unit: 20_000_000,
+    typical_system_efficiency: 0.60,
+    co2_lbs_per_mmbtu: 0,
+    default_price: 350,
+    input_mode: 'delivery',
+  },
+  {
+    key: 'kerosene',
+    name: 'Kerosene',
+    unit: 'gallon',
+    unit_plural: 'gallons',
+    btu_per_unit: 135_000,
+    typical_system_efficiency: 0.80,
+    co2_lbs_per_mmbtu: 159.5,
+    default_price: 4.50,
+    input_mode: 'delivery',
+  },
+];
+
+export function getFuelByKey(key: string): FuelReference | undefined {
+  return FUEL_DATA.find(f => f.key === key);
+}
