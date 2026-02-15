@@ -34,10 +34,16 @@ export async function resolveZipCode(zip: string): Promise<LocationData> {
     throw new Error(`No location found for zip code ${cleanZip}. Please check and try again.`);
   }
 
+  // Filter to US results only — the country_code param isn't reliable
+  const usResults = data.results.filter(r => r.country === 'United States');
+  if (usResults.length === 0) {
+    throw new Error(`No US location found for zip code ${cleanZip}. Please check and try again.`);
+  }
+
   // Find the best match — prefer one that has the zip in postcodes
-  const match = data.results.find(r =>
+  const match = usResults.find(r =>
     r.postcodes?.includes(cleanZip)
-  ) ?? data.results[0];
+  ) ?? usResults[0];
 
   const name = match.admin1
     ? `${match.name}, ${match.admin1}`
