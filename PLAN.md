@@ -2,43 +2,52 @@
 
 ## Current Status
 
-**Phase**: Project setup
-**Last updated**: 2026-02-14
-**Last session ended**: Initial setup — repo linked, docs created
-
-## Next Steps
-
-1. [ ] Decide on framework (vanilla JS vs React/Preact)
-2. [ ] Set up project structure and build tooling
-3. [ ] Implement core data structures (TypeScript interfaces)
-4. [ ] Build weather API integration (Open-Meteo)
-5. [ ] Implement degree day calculation
-6. [ ] Build bill entry UI
-7. [ ] Implement regression engine
-8. [ ] Build results/comparison display
-9. [ ] Add export/import functionality
-10. [ ] Delivery forecast feature (stretch)
+**Phase**: V1 complete, deployed, tested
+**Last updated**: 2026-02-15
+**Deployed at**: Netlify (connected to GitHub `main` branch)
 
 ## Completed
 
-- [x] Create GitHub repo and link local directory
-- [x] Initial commit with spec
-- [x] Create `claude-instructions.md`
-- [x] Create `PLAN.md`
+- [x] Decide on framework → React 19 + Vite 7 + TypeScript 5.9
+- [x] Set up project structure and build tooling
+- [x] Implement core data structures (TypeScript interfaces)
+- [x] Build weather API integration (Open-Meteo historical + forecast)
+- [x] Implement degree day calculation engine
+- [x] Build bill entry UI (billing + delivery modes, paste support)
+- [x] Implement regression engine (2-var and 3-var OLS)
+- [x] Build results display (summary cards, energy profile chart, fuel comparison)
+- [x] Add export/import functionality (JSON round-trip, CSV export)
+- [x] Delivery forecast feature (tank drawdown projection with uncertainty bands)
+- [x] Top-line findings component (plain-language summary)
+- [x] Explicit "Run Analysis" button with data staleness indicator
+- [x] Fix floating-point price display artifacts
+- [x] Fix date picker updating wrong row (removed memo, reverse sort)
+- [x] Fix delivery-to-interval conversion for regression
+- [x] Fix geocoding returning non-US results
+- [x] Fix import: close modal, sync zip input, skip false date-order warnings
+- [x] Set up Vitest test suite (92 tests across 8 files)
+- [x] Netlify deployment configuration
 
-## Open Questions
+## Next Steps / Future Work
 
-- Framework choice: vanilla JS, React, Preact, or something else?
-- Charting library preference?
-- Any specific styling/CSS framework preference?
-
-## Blockers
-
-(None currently)
+- [ ] Temperature-dependent heat pump COP curves
+- [ ] Time-of-use electricity pricing
+- [ ] Weatherization ROI calculations
+- [ ] PDF/OCR bill import
+- [ ] Code-split Recharts for smaller initial bundle
 
 ## Session Notes
 
 ### 2026-02-14 — Session 1
 - Set up repo, linked to GitHub
 - Created project documentation structure
-- Ready to begin implementation planning
+
+### 2026-02-15 — Session 2
+- One-shot V1 implementation (38 source files)
+- Bug fixes: price rounding, date picker, delivery conversion, analysis trigger
+- Added TopLineFindings, Run Analysis button, staleness indicator
+- Fixed geocoding (filter to US results)
+- Fixed import flow (close modal, sync zip, false warnings)
+- Set up Netlify deployment
+- Added Vitest test suite: 92 tests covering engine, utils, validation
+- Updated project documentation

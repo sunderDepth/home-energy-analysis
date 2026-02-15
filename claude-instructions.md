@@ -10,9 +10,11 @@
 5. Ask: "Where did we leave off?" if unclear
 
 ### During Work
+- **Run tests before every commit**: `npm run test` must pass. All 92+ tests green before pushing.
 - **Commit frequently**: After completing any logical unit of work, commit and push. Don't let work accumulate.
 - **Update docs as you go**: If you learn something new about my preferences, the codebase, or decisions we've made, update this file immediately.
 - **Keep PLAN.md current**: Mark completed tasks, add new tasks discovered during implementation, note blockers or open questions.
+- **Write tests for new engine/utility code**: Any new pure function in `src/engine/` or `src/utils/` should have a co-located `.test.ts` file.
 
 ### Ending a Session
 Before I close the window, remind me to let you:
@@ -26,6 +28,10 @@ Before I close the window, remind me to let you:
 | `claude-instructions.md` | This file. Living doc of project context, decisions, and preferences. |
 | `home-energy-analyzer-spec.md` | Product spec. Source of truth for requirements. |
 | `PLAN.md` | Implementation plan with task status. Where to pick up. |
+| `netlify.toml` | Netlify build config (fresh `npm install` + `npm run build`, publishes `dist/`). |
+| `src/engine/*.test.ts` | Unit tests for core engine (stats, degree-days, regression, fuel-comparison, delivery-forecast). |
+| `src/utils/*.test.ts` | Unit tests for formatting and hashing utilities. |
+| `src/components/io/ImportValidator.test.ts` | Unit tests for JSON import validation. |
 
 ---
 
@@ -35,9 +41,12 @@ Single-page, client-side web app that helps homeowners analyze energy usage by c
 
 ## Core Technical Decisions
 
-- **Stack**: Static HTML/CSS/JS (lightweight framework like React/Preact acceptable)
+- **Stack**: React 19 + Vite 7 + TypeScript 5.9
+- **Styling**: Tailwind CSS v4 with `@tailwindcss/vite` plugin and `@theme` design tokens
+- **Charts**: Recharts 3
+- **Testing**: Vitest 4 (92 tests across 8 files)
 - **Weather API**: Open-Meteo (free, no API key required)
-- **Hosting**: Static files (GitHub Pages, Netlify, etc.)
+- **Hosting**: Netlify (auto-deploys from `main` branch)
 - **Data persistence**: Browser-only, export/import as JSON files
 
 ## Key Data Structures
@@ -118,6 +127,9 @@ interface BillRecord {
 
 ## User Preferences & Learnings
 
-*This section is updated as I learn from working with you.*
-
-- (None yet — will be populated as we work together)
+- **Aesthetic**: Clean, warm, approachable — inspired by Rewiring America energy calculators. Not a Bloomberg terminal, not overly "lickable" either.
+- **Analysis trigger**: Explicit "Run Analysis" button, not auto-run. Show staleness banner ("Data changed — re-run?") when data changes after analysis.
+- **Row ordering**: Newest-first (reverse chronological) with row numbers.
+- **Plain language first**: Top-line findings in natural language before charts/data. The "answer" should be obvious.
+- **Import UX**: Close the modal on successful import. Don't show false warnings for delivery-mode date ordering.
+- **npm registry**: Local machine uses a private Nexus registry. The `.npmrc` in the repo pins `registry.npmjs.org` for CI. When regenerating `package-lock.json`, always use `--registry https://registry.npmjs.org/`.
